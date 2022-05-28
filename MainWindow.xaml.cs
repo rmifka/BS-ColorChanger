@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using BeatSaber;
@@ -32,6 +22,7 @@ namespace FirstWpfAPPColorPicker
         const int MAXIMUM = 510;
         const int MINIMUM = 255;
         SolidColorBrush BACKGROUND_COLOR = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 88, 88, 88));
+        
 
         public MainWindow()
         {
@@ -123,8 +114,6 @@ namespace FirstWpfAPPColorPicker
                 sw.Close();
             }
         }
-
-        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {  
@@ -323,8 +312,9 @@ namespace FirstWpfAPPColorPicker
         private void Color_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
-            foreach (Button button in My_Menu.Items)
+            for (int i = 0; i < 4; i++)
             {
+                Button button = (Button)My_Menu.Items[i];
                 button.Background = BACKGROUND_COLOR;
             }
             b.Background = Brushes.LightGreen;
@@ -341,9 +331,11 @@ namespace FirstWpfAPPColorPicker
 
         private void Click_ColorLeftOrRight(object sender, RoutedEventArgs e)
         {
+            
             Button b = (Button)sender;
             foreach (Button button in LeftOrRight.Items)
             {
+                
                 button.Background = BACKGROUND_COLOR;
             }
             b.Background = Brushes.LightGreen;
@@ -387,31 +379,71 @@ namespace FirstWpfAPPColorPicker
 
         private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
+            int redSliderValue = (int)RedSlider.Value;
+            int greenSliderValue = (int)GreenSlider.Value;
+            int blueSliderValue = (int)BlueSlider.Value;
+            if (redSliderValue > MINIMUM)
+            {
+                redSliderValue = 255;
+            }
+            if (greenSliderValue > MINIMUM)
+            {
+                greenSliderValue = 255;
+            }
+            if (blueSliderValue > MINIMUM)
+            {
+                blueSliderValue = 255;
+            }
+            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue , (byte)greenSliderValue, (byte)blueSliderValue));
         }
 
         private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
+            int redSliderValue = (int)RedSlider.Value;
+            int greenSliderValue = (int)GreenSlider.Value;
+            int blueSliderValue = (int)BlueSlider.Value;
+            if (redSliderValue > MINIMUM)
+            {
+                redSliderValue = 255;
+            }
+            if (greenSliderValue > MINIMUM)
+            {
+                greenSliderValue = 255;
+            }
+            if (blueSliderValue > MINIMUM)
+            {
+                blueSliderValue = 255;
+            }
+            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue, (byte)greenSliderValue, (byte)blueSliderValue));
         }
 
         private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value));
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
+            int redSliderValue = (int)RedSlider.Value;
+            int greenSliderValue = (int)GreenSlider.Value;
+            int blueSliderValue = (int)BlueSlider.Value;
+            if(redSliderValue > MINIMUM)
+            {
+                redSliderValue = 255;
+            }
+            if (greenSliderValue > MINIMUM)
+            {
+                greenSliderValue = 255;
+            }
+            if (blueSliderValue > MINIMUM)
+            {
+                blueSliderValue = 255;
+            }
+            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue, (byte)greenSliderValue, (byte)blueSliderValue));
         }
 
         private void AutoOversaturate(object sender, RoutedEventArgs e)
         {
-            
-            AlphaSlider.Value += MINIMUM;
-            GreenSlider.Value += MINIMUM;
-            RedSlider.Value += MINIMUM;
-            BlueSlider.Value += MINIMUM;    
+            Button_Click(sender, e);
+            AlphaSlider.Value *= 2;
+            GreenSlider.Value *= 2;
+            RedSlider.Value *= 2;
+            BlueSlider.Value *= 2;    
             
         }
 
