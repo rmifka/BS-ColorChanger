@@ -1,0 +1,57 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "FirstWpfAPPColorPicker/1.0.0": {
+        "dependencies": {
+          "Colourful": "3.1.0",
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "FirstWpfAPPColorPicker.dll": {}
+        }
+      },
+      "Colourful/3.1.0": {
+        "runtime": {
+          "lib/net6.0/Colourful.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/13.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.25517"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FirstWpfAPPColorPicker/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Colourful/3.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZeiISkERDoKQfUYnr7L3H9LjRbcklIs932Ud1de81tK5Q9TkC+TZjQ5Vy1y70wd47JBcU/DcG+G0W0RNOMo29g==",
+      "path": "colourful/3.1.0",
+      "hashPath": "colourful.3.1.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "path": "newtonsoft.json/13.0.1",
+      "hashPath": "newtonsoft.json.13.0.1.nupkg.sha512"
+    }
+  }
+}

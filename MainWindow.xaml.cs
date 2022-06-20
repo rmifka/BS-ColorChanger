@@ -19,29 +19,41 @@ namespace FirstWpfAPPColorPicker
         public int selectedUser = 1;
         public int leftOrRight = 1;
         public int overloadCount = 1;
+
         const int MAXIMUM = 510;
         const int MINIMUM = 255;
         SolidColorBrush BACKGROUND_COLOR = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 88, 88, 88));
-        
+
+        public PlayerData playerData;
+
 
         public MainWindow()
         {
             InitializeComponent();
+            dlg.Filter = "Data Files (.dat)|*.dat";
+            dlg.DefaultExt = ".dat";
         }
 
-        public PlayerData LoadFile()
+        public void LoadFile()
         {
             if (dlg.CheckFileExists && dlg.FileName.Length != 0)
             {
-                StreamReader sr = new StreamReader(dlg.OpenFile());
-                string json = sr.ReadToEnd();
-                PlayerData playerData = JsonConvert.DeserializeObject<PlayerData>(json);
-                sr.Close();
+                try
+                {
+                    StreamReader sr = new StreamReader(dlg.OpenFile());
+                    string json = sr.ReadToEnd();
+                    PlayerData playerDataOneLoad = JsonConvert.DeserializeObject<PlayerData>(json);
+                    sr.Close();
 
-                return playerData;
+                    playerData = playerDataOneLoad;
+                    SliderValue(selectedUser,leftOrRight);
+                }
+                catch (Exception ex)
+                {
+                    Logger.WriteLog(ex.Message);
+                }
+
             }
-            
-            return null;
         }
         /*
         public HSV LoadHSVFile()
@@ -71,10 +83,10 @@ namespace FirstWpfAPPColorPicker
             return j;
         }
         */
-            
+
         public PlayerData ChangeFileId(int user, int i)
         {
-            PlayerData playerData = LoadFile();
+
             if (playerData == null)
             {
                 return null;
@@ -85,11 +97,11 @@ namespace FirstWpfAPPColorPicker
             {
                 playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].saberAColor = col;
             }
-            else if(i == 2)
+            else if (i == 2)
             {
                 playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].saberBColor = col;
             }
-            else if(i == 3)
+            else if (i == 3)
             {
                 playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].environmentColor0 = col;
             }
@@ -116,8 +128,8 @@ namespace FirstWpfAPPColorPicker
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {  
-            for (int i = 0; i < overloadCount;i++)
+        {
+            for (int i = 0; i < overloadCount; i++)
             {
                 RedSlider.Maximum += MINIMUM;
                 GreenSlider.Maximum += MINIMUM;
@@ -126,19 +138,19 @@ namespace FirstWpfAPPColorPicker
             }
         }
 
-        
-        
-        private void SliderValue(int user,int i)
+
+
+        private void SliderValue(int user, int i)
         {
-            PlayerData playerData = LoadFile();
+
             if (playerData == null)
             {
                 return;
             }
             var colorData = playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1];
-            
-                
-            
+
+
+
             if (i == 1)
             {
                 if (colorData.saberAColor.r * 255 > 255 || colorData.saberAColor.b * 255 > 255 || colorData.saberAColor.g * 255 > 255 || colorData.saberAColor.a * 255 > 255)
@@ -159,9 +171,9 @@ namespace FirstWpfAPPColorPicker
                 GreenSlider.Value = Math.Round(colorData.saberAColor.g * MINIMUM);
                 BlueSlider.Value = Math.Round(colorData.saberAColor.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.saberAColor.a * MINIMUM);
-                
+
             }
-            else if(i ==2)
+            else if (i == 2)
             {
                 if (colorData.saberBColor.r * MINIMUM > MINIMUM || colorData.saberBColor.b * MINIMUM > MINIMUM || colorData.saberBColor.g * MINIMUM > MINIMUM || colorData.saberBColor.a * MINIMUM > MINIMUM)
                 {
@@ -181,9 +193,9 @@ namespace FirstWpfAPPColorPicker
                 GreenSlider.Value = Math.Round(colorData.saberBColor.g * MINIMUM);
                 BlueSlider.Value = Math.Round(colorData.saberBColor.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.saberBColor.a * MINIMUM);
-                
-            }    
-            else if(i==3)
+
+            }
+            else if (i == 3)
             {
                 if (colorData.environmentColor0.r * MINIMUM > MINIMUM || colorData.environmentColor0.b * MINIMUM > MINIMUM || colorData.environmentColor0.g * MINIMUM > MINIMUM || colorData.environmentColor0.a * MINIMUM > MINIMUM)
                 {
@@ -205,7 +217,7 @@ namespace FirstWpfAPPColorPicker
                 GreenSlider.Value = Math.Round(colorData.environmentColor0.g * MINIMUM);
                 BlueSlider.Value = Math.Round(colorData.environmentColor0.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.environmentColor0.a * MINIMUM);
-                
+
             }
             else if (i == 4)
             {
@@ -227,7 +239,7 @@ namespace FirstWpfAPPColorPicker
                 GreenSlider.Value = Math.Round(colorData.environmentColor1.g * MINIMUM);
                 BlueSlider.Value = Math.Round(colorData.environmentColor1.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.environmentColor1.a * MINIMUM);
-                
+
             }
             else if (i == 5)
             {
@@ -250,14 +262,15 @@ namespace FirstWpfAPPColorPicker
                 BlueSlider.Value = Math.Round(colorData.obstaclesColor.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.obstaclesColor.a * MINIMUM);
             }
+            
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SelectFile(object sender, RoutedEventArgs e)
         {
+            
             var file = dlg.ShowDialog();
-            dlg.DefaultExt = ".dat";
-            dlg.Filter = "Data Files (.dat)|*.dat";
             dlg.Multiselect = false;
+            LoadFile();
 
         }
 
@@ -293,7 +306,7 @@ namespace FirstWpfAPPColorPicker
         private void SaveToUserClick(object sender, RoutedEventArgs e)
         {
             PlayerData playerData = ChangeFileId(selectedUser, leftOrRight);
-            if (playerData == null) 
+            if (playerData == null)
             {
                 MessageBox.Show("Please select a valid file first!");
                 return;
@@ -324,18 +337,20 @@ namespace FirstWpfAPPColorPicker
                 if (b.Name.Contains(i.ToString()))
                 {
                     selectedUser = i;
+                    SliderValue(selectedUser, leftOrRight);
                 }
 
             }
+
         }
 
         private void Click_ColorLeftOrRight(object sender, RoutedEventArgs e)
         {
-            
+
             Button b = (Button)sender;
             foreach (Button button in LeftOrRight.Items)
             {
-                
+
                 button.Background = BACKGROUND_COLOR;
             }
             b.Background = Brushes.LightGreen;
@@ -364,77 +379,35 @@ namespace FirstWpfAPPColorPicker
 
         private void ClearAllCampaigns(object sender, RoutedEventArgs e)
         {
-            PlayerData missionsStatsData = LoadFile();
-            if (missionsStatsData == null)
+
+            if (playerData == null)
             {
                 MessageBox.Show("Please select a valid file first!");
                 return;
             }
-            for (int i = 0; i < missionsStatsData.localPlayers[0].missionsStatsData.Count; i++)
+            for (int i = 0; i < playerData.localPlayers[0].missionsStatsData.Count; i++)
             {
-                missionsStatsData.localPlayers[0].missionsStatsData[i].cleared = true;
+                playerData.localPlayers[0].missionsStatsData[i].cleared = true;
             }
 
         }
 
         private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int redSliderValue = (int)RedSlider.Value;
-            int greenSliderValue = (int)GreenSlider.Value;
-            int blueSliderValue = (int)BlueSlider.Value;
-            if (redSliderValue > MINIMUM)
-            {
-                redSliderValue = 255;
-            }
-            if (greenSliderValue > MINIMUM)
-            {
-                greenSliderValue = 255;
-            }
-            if (blueSliderValue > MINIMUM)
-            {
-                blueSliderValue = 255;
-            }
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue , (byte)greenSliderValue, (byte)blueSliderValue));
+
+            ColorPreviewChange();
         }
 
         private void GreenSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int redSliderValue = (int)RedSlider.Value;
-            int greenSliderValue = (int)GreenSlider.Value;
-            int blueSliderValue = (int)BlueSlider.Value;
-            if (redSliderValue > MINIMUM)
-            {
-                redSliderValue = 255;
-            }
-            if (greenSliderValue > MINIMUM)
-            {
-                greenSliderValue = 255;
-            }
-            if (blueSliderValue > MINIMUM)
-            {
-                blueSliderValue = 255;
-            }
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue, (byte)greenSliderValue, (byte)blueSliderValue));
+
+            ColorPreviewChange();
         }
 
         private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            int redSliderValue = (int)RedSlider.Value;
-            int greenSliderValue = (int)GreenSlider.Value;
-            int blueSliderValue = (int)BlueSlider.Value;
-            if(redSliderValue > MINIMUM)
-            {
-                redSliderValue = 255;
-            }
-            if (greenSliderValue > MINIMUM)
-            {
-                greenSliderValue = 255;
-            }
-            if (blueSliderValue > MINIMUM)
-            {
-                blueSliderValue = 255;
-            }
-            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue, (byte)greenSliderValue, (byte)blueSliderValue));
+
+            ColorPreviewChange();
         }
 
         private void AutoOversaturate(object sender, RoutedEventArgs e)
@@ -443,14 +416,78 @@ namespace FirstWpfAPPColorPicker
             AlphaSlider.Value *= 2;
             GreenSlider.Value *= 2;
             RedSlider.Value *= 2;
-            BlueSlider.Value *= 2;    
-            
+            BlueSlider.Value *= 2;
+
         }
 
+        public void ColorPreviewChange()
+        {
+            int redSliderValue = (int)RedSlider.Value;
+            int greenSliderValue = (int)GreenSlider.Value;
+            int blueSliderValue = (int)BlueSlider.Value;
+            if (redSliderValue > MINIMUM)
+            {
+                redSliderValue = 255;
+            }
+            if (greenSliderValue > MINIMUM)
+            {
+                greenSliderValue = 255;
+            }
+            if (blueSliderValue > MINIMUM)
+            {
+                blueSliderValue = 255;
+            }
+            ColorPreview.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)redSliderValue, (byte)greenSliderValue, (byte)blueSliderValue));
+        }
         private void OverloadCountBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = OverloadCountBox.Text;
             overloadCount = int.TryParse(text, out overloadCount) ? overloadCount : 1;
         }
+
+        private void CheckHex(object sender, TextChangedEventArgs e)
+        {
+            string text = HexadecimalBox.Text.ToUpper();
+
+
+            if (text.Length >= 2)
+            {
+                RedSlider.Value = HexToInt(text, 0, 1);
+            }
+            if (text.Length >= 4)
+            {
+                GreenSlider.Value = HexToInt(text, 2, 3);
+            }
+            if (text.Length >= 6)
+            {
+                BlueSlider.Value = HexToInt(text, 4, 5);
+            }
+            if (text.Length == 8)
+            {
+                AlphaSlider.Value = HexToInt(text, 6, 7);
+            }
+
+        }
+
+        public int HexToInt(string text, int index1, int index2)
+        {
+            string text2places = string.Empty;
+            text2places = text[index1].ToString().ToUpper() + text[index2].ToString().ToUpper();
+            for (int i = 0; i < text2places.Length; i++)
+            {
+                if (!char.IsDigit(text2places[i])
+                    && text2places[i] != 'F'
+                    && text2places[i] != 'E'
+                    && text2places[i] != 'D'
+                    && text2places[i] != 'C'
+                    && text2places[i] != 'B'
+                    && text2places[i] != 'A')
+                {
+                    return 0;
+                }
+            }
+            return Convert.ToInt32(text2places, 16);
+        }
+
     }
 }

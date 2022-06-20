@@ -102,14 +102,14 @@ namespace BeatSaber
         public int goodCutsCount { get; set; }
         public int badCutsCount { get; set; }
         public int missedCutsCount { get; set; }
-        public int totalScore { get; set; }
+        public long totalScore { get; set; }
         public int playedLevelsCount { get; set; }
         public int cleardLevelsCount { get; set; }
         public int failedLevelsCount { get; set; }
         public int fullComboCount { get; set; }
         public double timePlayed { get;set; }
         public int handDistanceTravelled { get; set; }
-        public int cummulativeCutScoreWithoutMultiplier { get; set; }
+        public long cummulativeCutScoreWithoutMultiplier { get; set; }
     }
     public class LevelsStatsData
     {

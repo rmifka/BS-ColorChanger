@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>ColorChanger</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="iconForColorChanger.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Colourful" Version="3.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="iconForColorChanger.ico" />
+  </ItemGroup>
+
+</Project>
