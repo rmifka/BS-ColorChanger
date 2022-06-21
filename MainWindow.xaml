@@ -62,6 +62,55 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="FocusVisual1">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background1" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383"/>
+        <Style x:Key="ColorPreseter" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border1}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="15" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF747474"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#000000"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border1}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground1}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
     </Window.Resources>
     <Grid x:Name="ColorPicker" Background="#FF3A3A3A">
@@ -78,11 +127,11 @@
         <Slider x:Name="GreenSlider" Margin="98,134,54,252" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" ValueChanged="GreenSlider_ValueChanged" Grid.Column="1"/>
         <Slider x:Name="BlueSlider" Margin="98,161,54,220" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" ValueChanged="BlueSlider_ValueChanged" Grid.Column="1"/>
         <Label x:Name="BlueSliderValue" Content="{Binding Value, ElementName=BlueSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="594,155,0,0" VerticalAlignment="Top" Width="80" Background="#FF3A3A3A" Foreground="White" BorderBrush="#FFB4B4B4" Height="25" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Button Style="{DynamicResource RoundedButtons}" Content="Overloader" HorizontalAlignment="Left" Margin="14,213,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FF585858" Foreground="White" FontSize="10" FontFamily="Adobe Gothic Std L" Grid.ColumnSpan="2"/>
+        <Button Style="{DynamicResource RoundedButtons}" Content="Overloader" HorizontalAlignment="Left" Margin="14,213,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FF585858" Foreground="White" FontSize="10" FontFamily="Adobe Gothic Std L" Grid.ColumnSpan="2" Height="20"/>
         <Label x:Name="GreenSliderValue" Content="{Binding Value, ElementName=GreenSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="594,129,0,0" VerticalAlignment="Top" Width="80" Background="#FF3A3A3A" Foreground="White" BorderBrush="#FFB4B4B4" Height="25" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Label x:Name="RedSliderValue" Content="{Binding Value, ElementName=RedSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="594,104,0,0" VerticalAlignment="Top" Width="80" Background="#FF3A3A3A" Foreground="White" BorderBrush="#FFB4B4B4" Height="25" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Button Style="{DynamicResource RoundedButtons}" Content="Select File" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="30" Width="100" Click="SelectFile" Background="#FF585858" Foreground="White" FontFamily="Adobe Gothic Std L" Grid.ColumnSpan="2"/>
-        <Button Style="{DynamicResource RoundedButtons}" Content="Reset Overload" HorizontalAlignment="Left" Margin="17,213,0,0" VerticalAlignment="Top" Click="Button_Click_2" Background="#FF585858" Foreground="White" FontFamily="Adobe Gothic Std L" FontSize="10" Width="92" Grid.Column="1"/>
+        <Button Style="{DynamicResource RoundedButtons}" Content="Reset Overload" HorizontalAlignment="Left" Margin="17,213,0,0" VerticalAlignment="Top" Click="Button_Click_2" Background="#FF585858" Foreground="White" FontFamily="Adobe Gothic Std L" FontSize="10" Width="92" Grid.Column="1" Height="20"/>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="58,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Foreground="White" FontFamily="Adobe Gothic Std L" Grid.Column="1"><Run Language="de-de" Text="Alpha:"/></TextBlock>
         <Slider x:Name="AlphaSlider" Margin="98,188,53,193" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" ValueChanged="AlphaSlider_ValueChanged" Background="#003A3A3A" Grid.Column="1"/>
         <Label x:Name="AlphaSliderValue" Content="{Binding Value, ElementName=AlphaSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="594,182,0,0" VerticalAlignment="Top" Width="80" Background="#FF3A3A3A" Foreground="White" BorderBrush="#FFB4B4B4" Height="25" Grid.Column="1" Grid.ColumnSpan="2"/>
@@ -155,8 +204,23 @@
         <Label Content="Overload Count: " HorizontalAlignment="Left" Margin="6,324,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="33" Width="111" Foreground="White" FontFamily="Adobe Gothic Std L"/>
         <TextBox x:Name="OverloadCountBox" Grid.Column="1" HorizontalAlignment="Left" Margin="58,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF585858" Foreground="White" TextChanged="OverloadCountBox_TextChanged" IsTabStop="False" Text="1" FontFamily="Adobe Gothic Std L"/>
         <Label Content="Select your PlayerData.dat File. " Margin="14,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Adobe Gothic Std L" Background="#0065651B" Foreground="White" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="HexadecimalBox" Grid.Column="1" HorizontalAlignment="Left" Margin="572,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF585858" Foreground="White" TextChanged="CheckHex" IsTabStop="False" FontFamily="Adobe Gothic Std L" Grid.ColumnSpan="2"/>
-        <Label Content="HexValue:" HorizontalAlignment="Left" Margin="506,328,0,0" VerticalAlignment="Top" Height="32" Width="111" Foreground="White" FontFamily="Adobe Gothic Std L" Grid.Column="1" RenderTransformOrigin="0.54,0.612"/>
+        <TextBox x:Name="HexadecimalBox" Grid.Column="1" HorizontalAlignment="Left" Margin="572,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FF585858" Foreground="White" TextChanged="CheckHex" IsTabStop="False" FontFamily="Adobe Gothic Std L" Grid.ColumnSpan="2"/>
+        <Label Content="HexValue:" HorizontalAlignment="Left" Margin="506,328,0,0" VerticalAlignment="Top" Height="29" Width="61" Foreground="White" FontFamily="Adobe Gothic Std L" Grid.Column="1" RenderTransformOrigin="0.54,0.612"/>
+        <Button Style="{DynamicResource RoundedButtons}" x:Name="RandomColorButton" Grid.Column="1" Content="Random Color" HorizontalAlignment="Left" Margin="209,213,0,0" VerticalAlignment="Top" Background="#FF585858" Foreground="White" Width="90" Height="24" FontFamily="Adobe Gothic Std L" FontSize="10" Click="RandomColor"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="DefaultRed" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="337,217,0,0" VerticalAlignment="Top" Background="#FFA82020" Foreground="White" Width="17" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="DefaultBlue" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="359,217,0,0" VerticalAlignment="Top" Background="#FF2064A8" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="OverloadedRed" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="380,217,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="OverloadedGreen" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="401,217,0,0" VerticalAlignment="Top" Background="Lime" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="OverloadedBlue" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="422,217,0,0" VerticalAlignment="Top" Background="Blue" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="Black" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="443,217,0,0" VerticalAlignment="Top" Background="Black" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="White" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="464,217,0,0" VerticalAlignment="Top" Background="White" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="Cyan" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="485,217,0,0" VerticalAlignment="Top" Background="Cyan" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="Magenta" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="506,217,0,0" VerticalAlignment="Top" Background="Magenta" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="LawnGreen" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="527,217,0,0" VerticalAlignment="Top" Background="LawnGreen" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="BlueGreen" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="548,217,0,0" VerticalAlignment="Top" Background="SpringGreen" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="lavender" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="569,217,0,0" VerticalAlignment="Top" Background="Lavender" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="HotPink" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="590,217,0,0" VerticalAlignment="Top" Background="HotPink" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
+        <Button Style="{DynamicResource ColorPreseter}" x:Name="MediumStateBlue" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="611,217,0,0" VerticalAlignment="Top" Background="MediumSlateBlue" Foreground="White" Width="16" Height="16" FontFamily="Adobe Gothic Std L" FontSize="10" Click="SerColorFromPreset"/>
 
     </Grid>
 </Window>

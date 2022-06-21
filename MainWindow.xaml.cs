@@ -46,7 +46,7 @@ namespace FirstWpfAPPColorPicker
                     sr.Close();
 
                     playerData = playerDataOneLoad;
-                    SliderValue(selectedUser,leftOrRight);
+                    SliderValue(selectedUser, leftOrRight);
                 }
                 catch (Exception ex)
                 {
@@ -155,17 +155,11 @@ namespace FirstWpfAPPColorPicker
             {
                 if (colorData.saberAColor.r * 255 > 255 || colorData.saberAColor.b * 255 > 255 || colorData.saberAColor.g * 255 > 255 || colorData.saberAColor.a * 255 > 255)
                 {
-                    RedSlider.Maximum = MAXIMUM;
-                    GreenSlider.Maximum = MAXIMUM;
-                    BlueSlider.Maximum = MAXIMUM;
-                    AlphaSlider.Maximum = MAXIMUM;
+                    SetMaximum();
                 }
                 else
                 {
-                    RedSlider.Maximum = MINIMUM;
-                    GreenSlider.Maximum = MINIMUM;
-                    BlueSlider.Maximum = MINIMUM;
-                    AlphaSlider.Maximum = MINIMUM;
+                    SetMinimum(); ;
                 }
                 RedSlider.Value = Math.Round(colorData.saberAColor.r * 255);
                 GreenSlider.Value = Math.Round(colorData.saberAColor.g * MINIMUM);
@@ -184,10 +178,7 @@ namespace FirstWpfAPPColorPicker
                 }
                 else
                 {
-                    RedSlider.Maximum = MINIMUM;
-                    GreenSlider.Maximum = MINIMUM;
-                    BlueSlider.Maximum = MINIMUM;
-                    AlphaSlider.Maximum = MINIMUM;
+                    SetMinimum();
                 }
                 RedSlider.Value = Math.Round(colorData.saberBColor.r * MINIMUM);
                 GreenSlider.Value = Math.Round(colorData.saberBColor.g * MINIMUM);
@@ -199,17 +190,11 @@ namespace FirstWpfAPPColorPicker
             {
                 if (colorData.environmentColor0.r * MINIMUM > MINIMUM || colorData.environmentColor0.b * MINIMUM > MINIMUM || colorData.environmentColor0.g * MINIMUM > MINIMUM || colorData.environmentColor0.a * MINIMUM > MINIMUM)
                 {
-                    RedSlider.Maximum = MAXIMUM;
-                    GreenSlider.Maximum = MAXIMUM;
-                    BlueSlider.Maximum = MAXIMUM;
-                    AlphaSlider.Maximum = MAXIMUM;
+                    SetMaximum();
                 }
                 else
                 {
-                    RedSlider.Maximum = MINIMUM;
-                    GreenSlider.Maximum = MINIMUM;
-                    BlueSlider.Maximum = MINIMUM;
-                    AlphaSlider.Maximum = MINIMUM;
+                    SetMinimum();
                 }
 
 
@@ -223,17 +208,11 @@ namespace FirstWpfAPPColorPicker
             {
                 if (colorData.environmentColor1.r * MINIMUM > MINIMUM || colorData.environmentColor1.b * MINIMUM > MINIMUM || colorData.environmentColor1.g * MINIMUM > MINIMUM || colorData.environmentColor1.a * MINIMUM > MINIMUM)
                 {
-                    RedSlider.Maximum = MAXIMUM;
-                    GreenSlider.Maximum = MAXIMUM;
-                    BlueSlider.Maximum = MAXIMUM;
-                    AlphaSlider.Maximum = MAXIMUM;
+                    SetMaximum();
                 }
                 else
                 {
-                    RedSlider.Maximum = MINIMUM;
-                    GreenSlider.Maximum = MINIMUM;
-                    BlueSlider.Maximum = MINIMUM;
-                    AlphaSlider.Maximum = MINIMUM;
+                    SetMinimum();
                 }
                 RedSlider.Value = Math.Round(colorData.environmentColor1.r * MINIMUM);
                 GreenSlider.Value = Math.Round(colorData.environmentColor1.g * MINIMUM);
@@ -245,29 +224,37 @@ namespace FirstWpfAPPColorPicker
             {
                 if (colorData.obstaclesColor.r * MINIMUM > MINIMUM || colorData.obstaclesColor.b * MINIMUM > MINIMUM || colorData.obstaclesColor.g * MINIMUM > MINIMUM || colorData.obstaclesColor.a * MINIMUM > MINIMUM)
                 {
-                    RedSlider.Maximum = MAXIMUM;
-                    GreenSlider.Maximum = MAXIMUM;
-                    BlueSlider.Maximum = MAXIMUM;
-                    AlphaSlider.Maximum = MAXIMUM;
+                    SetMaximum();
                 }
                 else
                 {
-                    RedSlider.Maximum = MINIMUM;
-                    GreenSlider.Maximum = MINIMUM;
-                    BlueSlider.Maximum = MINIMUM;
-                    AlphaSlider.Maximum = MINIMUM;
+                    SetMinimum();
                 }
                 RedSlider.Value = Math.Round(colorData.obstaclesColor.r * MINIMUM);
                 GreenSlider.Value = Math.Round(colorData.obstaclesColor.g * MINIMUM);
                 BlueSlider.Value = Math.Round(colorData.obstaclesColor.b * MINIMUM);
                 AlphaSlider.Value = Math.Round(colorData.obstaclesColor.a * MINIMUM);
             }
-            
+
         }
 
+        private void SetMinimum()
+        {
+            RedSlider.Maximum = MINIMUM;
+            GreenSlider.Maximum = MINIMUM;
+            BlueSlider.Maximum = MINIMUM;
+            AlphaSlider.Maximum = MINIMUM;
+        }
+        private void SetMaximum()
+        {
+            RedSlider.Maximum = MAXIMUM;
+            GreenSlider.Maximum = MAXIMUM;
+            BlueSlider.Maximum = MAXIMUM;
+            AlphaSlider.Maximum = MAXIMUM;
+        }
         private void SelectFile(object sender, RoutedEventArgs e)
         {
-            
+
             var file = dlg.ShowDialog();
             dlg.Multiselect = false;
             LoadFile();
@@ -489,5 +476,39 @@ namespace FirstWpfAPPColorPicker
             return Convert.ToInt32(text2places, 16);
         }
 
+        private void RandomColor(object sender, RoutedEventArgs e)
+        {
+            Random randoInt = new Random();
+            RedSlider.Value = randoInt.Next(0, 255);
+            GreenSlider.Value = randoInt.Next(0, 255);
+            BlueSlider.Value = randoInt.Next(0, 255);
+        }
+
+        private void SerColorFromPreset(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            //# FFC3FBE4        
+            Brush backgroundColor = b.Background;
+            int redBrush = ((SolidColorBrush)backgroundColor).Color.R;
+            int greenBrush = ((SolidColorBrush)backgroundColor).Color.G;
+            int blueBrush = ((SolidColorBrush)backgroundColor).Color.B;
+
+            if (b.Name.Contains("Overload"))
+            {
+                SetMaximum();
+                redBrush *= 2;
+                greenBrush *= 2;
+                blueBrush *= 2;
+            }
+            else
+            {
+                SetMinimum();
+            }
+
+            RedSlider.Value = redBrush;
+            GreenSlider.Value = greenBrush;
+            BlueSlider.Value = blueBrush;      
+            AlphaSlider.Value = MAXIMUM;
+        }
     }
 }
