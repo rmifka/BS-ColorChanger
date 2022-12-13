@@ -142,6 +142,9 @@ namespace BeatSaber
         public Color environmentColor0 { get; set; }
         public Color environmentColor1 { get; set; }
         public Color obstaclesColor { get; set; }
+        //Post 1.23
+        public Color environmentColor0Boost { get; set; }
+        public Color environmentColor1Boost { get; set; }
     }
     public class Color
     {

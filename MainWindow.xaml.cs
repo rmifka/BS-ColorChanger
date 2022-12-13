@@ -138,8 +138,6 @@ namespace FirstWpfAPPColorPicker
             }
         }
 
-
-
         private void SliderValue(int user, int i)
         {
 
