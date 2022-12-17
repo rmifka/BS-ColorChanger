@@ -244,7 +244,8 @@ public partial class MainWindow : Window
             playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].environmentColor0 = col;
         else if (i == 4)
             playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].environmentColor1 = col;
-        else if (i == 5) playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].obstaclesColor = col;
+        else if (i == 5) 
+            playerData.localPlayers[0].colorSchemesSettings.colorSchemes[user - 1].obstaclesColor = col;
 
         return playerData;
     }
@@ -414,12 +415,13 @@ public partial class MainWindow : Window
         var playerData = ChangeFileId(selectedUser, leftOrRight);
         if (playerData == null)
         {
-            MessageBox.Show("Please select a valid file first", "Invalid File", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Please select a valid file first", "Invalid File", MessageBoxButton.OK,
+                MessageBoxImage.Information);
             return;
         }
 
         SaveFile(playerData);
-        MessageBox.Show("Saved to user " + selectedUser,"Saved",MessageBoxButton.OK,MessageBoxImage.Information);
+        MessageBox.Show("Saved to user " + selectedUser, "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     // Token: 0x0600014A RID: 330 RVA: 0x00003C11 File Offset: 0x00001E11
@@ -432,8 +434,8 @@ public partial class MainWindow : Window
     {
         var b = (Button)sender;
         SetBackgroundColors();
-        b.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(86, 255, 255));
-        b.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(39, 34, 34));
+        b.Background = new SolidColorBrush(Color.FromRgb(86, 255, 255));
+        b.Foreground = new SolidColorBrush(Color.FromRgb(39, 34, 34));
         for (var i = 1; i <= 4; i++)
             if (b.Name.Contains(i.ToString()))
             {
@@ -447,8 +449,8 @@ public partial class MainWindow : Window
     {
         var b = (Button)sender;
         SetBackground();
-        b.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(86, 255, 255));
-        b.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(39, 34, 34));
+        b.Background = new SolidColorBrush(Color.FromRgb(86, 255, 255));
+        b.Foreground = new SolidColorBrush(Color.FromRgb(39, 34, 34));
         if (b.Name.Contains("Left"))
             leftOrRight = 1;
         else if (b.Name.Contains("Right"))
