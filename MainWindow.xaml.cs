@@ -35,7 +35,7 @@ public partial class MainWindow : Window
     }
 
     // Token: 0x0600013A RID: 314 RVA: 0x00002B8C File Offset: 0x00000D8C
-    public void WriteEntierJsonFile()
+    public void WriteEntireJsonFile()
     {
         var path = "Presets.json";
         var DataToWrite = new ColorImport
@@ -196,7 +196,7 @@ public partial class MainWindow : Window
 
     public ColorImport TryReadCustomColorPreset(string path)
     {
-        if (!File.Exists(path)) WriteEntierJsonFile();
+        if (!File.Exists(path)) WriteEntireJsonFile();
 
         var sr = new StreamReader(path);
         var customColorPreset = JsonConvert.DeserializeObject<ColorImport>(sr.ReadToEnd());
