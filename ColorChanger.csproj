@@ -21,4 +21,8 @@
     <Resource Include="iconForColorChanger.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
+
 </Project>

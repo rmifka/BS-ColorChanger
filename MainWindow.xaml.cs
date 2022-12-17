@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using BeatSaber;
-using CustomColorPreseter;
+using ColorChanger.HSV;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Color = System.Windows.Media.Color;
