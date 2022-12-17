@@ -18,7 +18,7 @@ public partial class MainWindow : Window
 {
     private const int MAXIMUM = 510;
     private const int MINIMUM = 255;
-    private readonly SolidColorBrush BACKGROUND_COLOR = new(Color.FromArgb(255, 88, 88, 88));
+    private readonly SolidColorBrush BACKGROUND_COLOR = new(Color.FromArgb(255, 33, 33, 56)); //	212138 
     public OpenFileDialog dlg = new();
     public int leftOrRight = 1;
     public int overloadCount = 1;
@@ -432,7 +432,8 @@ public partial class MainWindow : Window
     {
         var b = (Button)sender;
         SetBackgroundColors();
-        b.Background = Brushes.LightGreen;
+        b.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(86, 255, 255));
+        b.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(39, 34, 34));
         for (var i = 1; i <= 4; i++)
             if (b.Name.Contains(i.ToString()))
             {
@@ -446,7 +447,8 @@ public partial class MainWindow : Window
     {
         var b = (Button)sender;
         SetBackground();
-        b.Background = Brushes.LightGreen;
+        b.Background = new SolidColorBrush(System.Windows.Media.Color.FromRgb(86, 255, 255));
+        b.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromRgb(39, 34, 34));
         if (b.Name.Contains("Left"))
             leftOrRight = 1;
         else if (b.Name.Contains("Right"))
@@ -468,6 +470,11 @@ public partial class MainWindow : Window
         EnvironmentInner.Background = BACKGROUND_COLOR;
         EnvironmentOuter.Background = BACKGROUND_COLOR;
         Wall.Background = BACKGROUND_COLOR;
+        LeftSaber.Foreground = Brushes.White;
+        RightSaber.Foreground = Brushes.White;
+        EnvironmentInner.Foreground = Brushes.White;
+        EnvironmentOuter.Foreground = Brushes.White;
+        Wall.Foreground = Brushes.White;
     }
 
     // Token: 0x0600014E RID: 334 RVA: 0x00003D94 File Offset: 0x00001F94
@@ -477,6 +484,10 @@ public partial class MainWindow : Window
         Color2.Background = BACKGROUND_COLOR;
         Color3.Background = BACKGROUND_COLOR;
         Color4.Background = BACKGROUND_COLOR;
+        Color1.Foreground = Brushes.White;
+        Color2.Foreground = Brushes.White;
+        Color3.Foreground = Brushes.White;
+        Color4.Foreground = Brushes.White;
     }
 
     // Token: 0x0600014F RID: 335 RVA: 0x00003DE8 File Offset: 0x00001FE8
