@@ -414,12 +414,12 @@ public partial class MainWindow : Window
         var playerData = ChangeFileId(selectedUser, leftOrRight);
         if (playerData == null)
         {
-            MessageBox.Show("Please select a valid file first!");
+            MessageBox.Show("Please select a valid file first", "Invalid File", MessageBoxButton.OK, MessageBoxImage.Information);
             return;
         }
 
         SaveFile(playerData);
-        MessageBox.Show("Saved to user " + selectedUser);
+        MessageBox.Show("Saved to user " + selectedUser,"Saved",MessageBoxButton.OK,MessageBoxImage.Information);
     }
 
     // Token: 0x0600014A RID: 330 RVA: 0x00003C11 File Offset: 0x00001E11
