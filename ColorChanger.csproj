@@ -14,15 +14,56 @@
 
   <ItemGroup>
     <None Remove="iconForColorChanger.ico" />
+    <None Remove="IMG\AutoOverloadSelected.png" />
+    <None Remove="IMG\ChooseFileSelected.png" />
+    <None Remove="IMG\CustomizableButtonsSelected.png" />
+    <None Remove="IMG\OverloadSelected.png" />
+    <None Remove="IMG\RandomColorSelected.png" />
+    <None Remove="IMG\SaveButtonSelected.png" />
+    <None Remove="IMG\SlidersSelected.png" />
+    <None Remove="IMG\SlotSelection.png" />
+    <None Remove="IMG\StandardPage.png" />
+    <None Remove="IMG\TypeSelection.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Colourful" Version="3.1.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="iconForColorChanger.ico" />
+    <Resource Include="IMG\AutoOverloadSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\ChooseFileSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\CustomizableButtonsSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\OverloadSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\RandomColorSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\SaveButtonSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\SlidersSelected.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\SlotSelection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\StandardPage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="IMG\TypeSelection.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

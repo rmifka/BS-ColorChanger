@@ -601,4 +601,10 @@ public partial class MainWindow : Window
     {
         WindowState = WindowState.Minimized;
     }
+
+    private void PlayTutorial(object sender, RoutedEventArgs e)
+    {
+        TutorialWindow tutorial = new TutorialWindow();
+        tutorial.Show();
+    }
 }
