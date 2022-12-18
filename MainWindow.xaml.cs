@@ -34,7 +34,6 @@ public partial class MainWindow : Window
         dlg.DefaultExt = ".dat";
     }
 
-    // Token: 0x0600013A RID: 314 RVA: 0x00002B8C File Offset: 0x00000D8C
     public void WriteEntireJsonFile()
     {
         var path = "Presets.json";
@@ -149,14 +148,12 @@ public partial class MainWindow : Window
         }
     }
 
-    // Token: 0x0600013B RID: 315 RVA: 0x00002ED0 File Offset: 0x000010D0
     public ColorImport LoadColorsFromFile()
     {
         var path = "Presets.json";
         return TryReadCustomColorPreset(path);
     }
 
-    // Token: 0x0600013C RID: 316 RVA: 0x00002EEC File Offset: 0x000010EC
     public void InputColorsFromFileIntoButtons()
     {
         ChangeColorsAndName(Preset1, 0);
@@ -175,7 +172,6 @@ public partial class MainWindow : Window
         ChangeColorsAndName(Preset14, 13);
     }
 
-    // Token: 0x0600013D RID: 317 RVA: 0x00002FB4 File Offset: 0x000011B4
     public void ChangeColorsAndName(Button button, int arrayPlace)
     {
         var loadedColors = LoadColorsFromFile();
@@ -193,7 +189,6 @@ public partial class MainWindow : Window
             loadedColors.colors[arrayPlace].b < 255 ? (byte)loadedColors.colors[arrayPlace].b : byte.MaxValue));
     }
 
-
     public ColorImport TryReadCustomColorPreset(string path)
     {
         if (!File.Exists(path)) WriteEntireJsonFile();
@@ -206,7 +201,6 @@ public partial class MainWindow : Window
         return customColorPreset;
     }
 
-    // Token: 0x0600013F RID: 319 RVA: 0x000030D0 File Offset: 0x000012D0
     public void LoadFile()
     {
         if (dlg.CheckFileExists && dlg.FileName.Length != 0)
@@ -224,7 +218,6 @@ public partial class MainWindow : Window
             }
     }
 
-    // Token: 0x06000140 RID: 320 RVA: 0x00003154 File Offset: 0x00001354
     public PlayerData ChangeFileId(int user, int i)
     {
         if (playerData == null) return null;
@@ -262,7 +255,6 @@ public partial class MainWindow : Window
         }
     }
 
-    // Token: 0x06000142 RID: 322 RVA: 0x000032F8 File Offset: 0x000014F8
     private void Button_Click(object sender, RoutedEventArgs e)
     {
         for (var i = 0; i < overloadCount; i++)
@@ -274,7 +266,6 @@ public partial class MainWindow : Window
         }
     }
 
-    // Token: 0x06000143 RID: 323 RVA: 0x00003384 File Offset: 0x00001584
     private void SliderValue(int user, int i)
     {
         if (playerData == null) return;
@@ -362,7 +353,6 @@ public partial class MainWindow : Window
         }
     }
 
-    // Token: 0x06000144 RID: 324 RVA: 0x000039D8 File Offset: 0x00001BD8
     private void SetMinimum()
     {
         RedSlider.Maximum = 255.0;
@@ -371,7 +361,6 @@ public partial class MainWindow : Window
         AlphaSlider.Maximum = 255.0;
     }
 
-    // Token: 0x06000145 RID: 325 RVA: 0x00003A38 File Offset: 0x00001C38
     private void SetMaximum()
     {
         RedSlider.Maximum = 510.0;
@@ -380,7 +369,6 @@ public partial class MainWindow : Window
         AlphaSlider.Maximum = 510.0;
     }
 
-    // Token: 0x06000146 RID: 326 RVA: 0x00003A95 File Offset: 0x00001C95
     private void SelectFile(object sender, RoutedEventArgs e)
     {
         dlg.ShowDialog();
@@ -388,7 +376,6 @@ public partial class MainWindow : Window
         LoadFile();
     }
 
-    // Token: 0x06000147 RID: 327 RVA: 0x00003AB8 File Offset: 0x00001CB8
     private void Button_Click_2(object sender, RoutedEventArgs e)
     {
         RedSlider.Maximum = 255.0;
@@ -404,12 +391,10 @@ public partial class MainWindow : Window
         if (BlueSlider.Value > 255.0) BlueSlider.Value = 255.0;
     }
 
-    // Token: 0x06000148 RID: 328 RVA: 0x00003BBD File Offset: 0x00001DBD
     private void AlphaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
     }
 
-    // Token: 0x06000149 RID: 329 RVA: 0x00003BC0 File Offset: 0x00001DC0
     private void SaveToUserClick(object sender, RoutedEventArgs e)
     {
         var playerData = ChangeFileId(selectedUser, leftOrRight);
@@ -424,12 +409,10 @@ public partial class MainWindow : Window
         MessageBox.Show("Saved to user " + selectedUser, "Saved", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
-    // Token: 0x0600014A RID: 330 RVA: 0x00003C11 File Offset: 0x00001E11
     private void Button_Click_4(object sender, RoutedEventArgs e)
     {
     }
 
-    // Token: 0x0600014B RID: 331 RVA: 0x00003C14 File Offset: 0x00001E14
     private void Color_Click(object sender, RoutedEventArgs e)
     {
         var b = (Button)sender;
@@ -444,7 +427,6 @@ public partial class MainWindow : Window
             }
     }
 
-    // Token: 0x0600014C RID: 332 RVA: 0x00003C74 File Offset: 0x00001E74
     private void Click_ColorLeftOrRight(object sender, RoutedEventArgs e)
     {
         var b = (Button)sender;
@@ -464,7 +446,6 @@ public partial class MainWindow : Window
         SliderValue(selectedUser, leftOrRight);
     }
 
-    // Token: 0x0600014D RID: 333 RVA: 0x00003D30 File Offset: 0x00001F30
     public void SetBackground()
     {
         LeftSaber.Background = BACKGROUND_COLOR;
@@ -479,7 +460,6 @@ public partial class MainWindow : Window
         Wall.Foreground = Brushes.White;
     }
 
-    // Token: 0x0600014E RID: 334 RVA: 0x00003D94 File Offset: 0x00001F94
     public void SetBackgroundColors()
     {
         Color1.Background = BACKGROUND_COLOR;
@@ -492,7 +472,6 @@ public partial class MainWindow : Window
         Color4.Foreground = Brushes.White;
     }
 
-    // Token: 0x0600014F RID: 335 RVA: 0x00003DE8 File Offset: 0x00001FE8
     private void ClearAllCampaigns(object sender, RoutedEventArgs e)
     {
         if (playerData == null)
@@ -505,7 +484,6 @@ public partial class MainWindow : Window
             playerData.localPlayers[0].missionsStatsData[i].cleared = true;
     }
 
-    // Token: 0x06000150 RID: 336 RVA: 0x00003E49 File Offset: 0x00002049
     private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         ColorPreviewChange();
@@ -516,13 +494,11 @@ public partial class MainWindow : Window
         ColorPreviewChange();
     }
 
-    // Token: 0x06000152 RID: 338 RVA: 0x00003E59 File Offset: 0x00002059
     private void BlueSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         ColorPreviewChange();
     }
 
-    // Token: 0x06000153 RID: 339 RVA: 0x00003E64 File Offset: 0x00002064
     private void AutoOversaturate(object sender, RoutedEventArgs e)
     {
         Button_Click(sender, e);
@@ -532,7 +508,6 @@ public partial class MainWindow : Window
         BlueSlider.Value *= 2.0;
     }
 
-    // Token: 0x06000154 RID: 340 RVA: 0x00003EE8 File Offset: 0x000020E8
     public void ColorPreviewChange()
     {
         var redSliderValue = (int)RedSlider.Value;
@@ -548,14 +523,12 @@ public partial class MainWindow : Window
             (byte)greenSliderValue, (byte)blueSliderValue));
     }
 
-    // Token: 0x06000155 RID: 341 RVA: 0x00003F64 File Offset: 0x00002164
     private void OverloadCountBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         var text = OverloadCountBox.Text;
         overloadCount = int.TryParse(text, out overloadCount) ? overloadCount : 1;
     }
 
-    // Token: 0x06000156 RID: 342 RVA: 0x00003F9C File Offset: 0x0000219C
     private void CheckHex(object sender, TextChangedEventArgs e)
     {
         var text = HexadecimalBox.Text.ToUpper();
@@ -568,7 +541,6 @@ public partial class MainWindow : Window
         if (text.Length == 8) AlphaSlider.Value = HexToInt(text, 6, 7);
     }
 
-    // Token: 0x06000157 RID: 343 RVA: 0x00004034 File Offset: 0x00002234
     public int HexToInt(string text, int index1, int index2)
     {
         var text2places = string.Empty;
@@ -581,7 +553,6 @@ public partial class MainWindow : Window
         return Convert.ToInt32(text2places, 16);
     }
 
-    // Token: 0x06000158 RID: 344 RVA: 0x000040E0 File Offset: 0x000022E0
     private void RandomColor(object sender, RoutedEventArgs e)
     {
         var randoInt = new Random();
@@ -590,7 +561,6 @@ public partial class MainWindow : Window
         BlueSlider.Value = randoInt.Next(0, 255);
     }
 
-    // Token: 0x06000159 RID: 345 RVA: 0x0000413C File Offset: 0x0000233C
     private void SerColorFromPreset(object sender, RoutedEventArgs e)
     {
         var button = (Button)sender;
@@ -614,5 +584,20 @@ public partial class MainWindow : Window
         GreenSlider.Value = greenBrush;
         BlueSlider.Value = blueBrush;
         AlphaSlider.Value = 510.0;
+    }
+
+    private void Button_Click_1(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+
+    private void MainWindow1_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        DragMove();
+    }
+
+    private void Minimize(object sender, RoutedEventArgs e)
+    {
+        WindowState = WindowState.Minimized;
     }
 }
