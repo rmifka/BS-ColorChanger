@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Code\Presaves.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="iconForColorChanger.ico" />
   </ItemGroup>
 
@@ -23,6 +27,10 @@
 
   <ItemGroup>
     <Folder Include="UI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Code\Presaves.cs" />
   </ItemGroup>
 
 </Project>

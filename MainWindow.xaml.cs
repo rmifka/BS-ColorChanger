@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using BeatSaber;
+using ColorChanger;
 using ColorChanger.HSV;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -175,12 +176,12 @@ public partial class MainWindow : Window
 
     public void ChangeColorsAndName(Button button, int arrayPlace)
     {
-        var loadedColors = LoadColorsFromFile();
+        ColorImport loadedColors = LoadColorsFromFile();
         if (loadedColors.colors[arrayPlace] == null || loadedColors.colors.Length < 14)
         {
             MessageBox.Show(
                 "Sorry the software had a problem running. Have you checked your presets file? (Needs to be exactly 14 presets)");
-            Application.Current.Shutdown();
+            Close();
         }
 
         button.Name = loadedColors.colors[arrayPlace].name;
@@ -502,14 +503,12 @@ public partial class MainWindow : Window
 
     private void AutoOversaturate(object sender, RoutedEventArgs e)
     {
-        Button_Click(sender, e);
-        AlphaSlider.Value *= 2.0;
-        GreenSlider.Value *= 2.0;
-        RedSlider.Value *= 2.0;
-        BlueSlider.Value *= 2.0;
+        Popup popup = new Popup();
+        popup.Show();
     }
 
-    public void ColorPreviewChange()
+
+    private void ColorPreviewChange()
     {
         var redSliderValue = (int)RedSlider.Value;
         var greenSliderValue = (int)GreenSlider.Value;
@@ -589,6 +588,7 @@ public partial class MainWindow : Window
 
     private void Button_Click_1(object sender, RoutedEventArgs e)
     {
+
         Close();
     }
 
