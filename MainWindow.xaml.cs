@@ -27,7 +27,8 @@ public partial class MainWindow : Window
     public int selectedUser = 1;
 
     public MainWindow()
-    {
+    { 
+        WindowStartupLocation = WindowStartupLocation.CenterScreen;
         InitializeComponent();
         InputColorsFromFileIntoButtons();
         dlg.Filter = "Data Files (.dat)|*.dat";
