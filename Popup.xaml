@@ -1,4 +1,6 @@
-﻿<Window x:Class="ColorChanger.Popup" SizeToContent="Height" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ColorChanger" mc:Ignorable="d" Title="Popup" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize" Background="#661A1A1A">
+﻿<Window x:Class="ColorChanger.Popup" SizeToContent="Height" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ColorChanger"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d" Title="Popup" Height="500" Width="900" WindowStyle="None" ResizeMode="NoResize" Background="#661A1A1A">
     <Window.Resources>
         <Style x:Key="RoundedButtons" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -31,6 +33,7 @@
         <Button Style="{DynamicResource RoundedButtons}" Content="Auto Overload Red" Margin="0,116,0,344" Background="#FF212138" Foreground="White" BorderBrush="{x:Null}" Click="RedAutoOverload" FontFamily="Inter" HorizontalAlignment="Center" Width="140" Height="40" />
         <Button Style="{DynamicResource RoundedButtons}" Content="Auto Overload Green" Margin="81,129,81,132" Background="#FF212138" Foreground="White" BorderBrush="{x:Null}" FontFamily="Inter" Click="GreenAutoOverload" Width="140" Height="40" />
         <Button Style="{DynamicResource RoundedButtons}" Content="Auto Overload Blue" Margin="380,337,380,0" Background="#FF212138" Foreground="White" BorderBrush="{x:Null}" FontFamily="Inter" Click="BlueAutoOverload" Height="40" VerticalAlignment="Top" Width="140" />
+        <Button Style="{DynamicResource RoundedButtons}" Content="{iconPacks:ForkAwesome Kind=AngleLeft}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="28" Width="26" Background="#00000000" Foreground="White" FontSize="10" FontWeight="Bold" FontFamily="Inter" />
 
     </Grid>
 </Window>

@@ -98,5 +98,10 @@ namespace ColorChanger
                 wind.AlphaSlider.Maximum += 255.0;
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
