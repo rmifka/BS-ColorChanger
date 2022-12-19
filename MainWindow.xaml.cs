@@ -26,7 +26,6 @@ public partial class MainWindow : Window
     public PlayerData playerData;
     public int selectedUser = 1;
 
-
     public MainWindow()
     {
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -202,6 +201,7 @@ public partial class MainWindow : Window
         var customColorPreset = JsonConvert.DeserializeObject<ColorImport>(sr.ReadToEnd());
         sr.Close();
         if (customColorPreset == null) return null;
+
 
         return customColorPreset;
     }

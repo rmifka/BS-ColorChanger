@@ -1,5 +1,8 @@
 ﻿<Window x:Class="ColorChanger.StartScreen" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ColorChanger" mc:Ignorable="d" Title="StartScreen" Height="500" Width="900" Background="#FF1A1A1A" FontFamily="Inter" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
+
+
+
         <Style x:Key="RoundedButtons" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
             <Setter Property="BorderThickness" Value="0" />
@@ -33,8 +36,19 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:2" FillBehavior="HoldEnd" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+
     <Grid>
-        <TextBlock TextAlignment="Center" Foreground="#FFFF6565" FontSize="80" Margin="0,93,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Inter V Medium" Width="416"><Run Language="de-de" Text="Beat Saber" /></TextBlock>
+        <TextBlock x:Name="bstb" TextAlignment="Center" Foreground="#FFFF6565" FontSize="80" Margin="0,93,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Inter V Medium" Width="416"><Run Language="de-de" Text="Beat Saber" /></TextBlock>
         <TextBlock Text="Color Changer" TextAlignment="Center" Foreground="#FF2EAEFF" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="662" FontSize="80" FontFamily="Dissolve Regular" FontWeight="Bold" />
         <Button Style="{DynamicResource RoundedButtons}" Content="Start" Height="40" Background="#FFFF4848" Foreground="White" Margin="395,405,395,55" Click="Button_Click" />
     </Grid>

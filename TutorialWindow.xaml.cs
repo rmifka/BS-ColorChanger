@@ -40,6 +40,7 @@ namespace ColorChanger
             Left = wind.Left;
             AddImagesToArray();
             InitializeComponent();
+            NextImage(null, null);
         }
 
         private void AddImagesToArray()
