@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstWpfAPPColorPicker;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,23 @@ namespace ColorChanger
     /// <summary>
     /// Interaktionslogik für StartScreen.xaml
     /// </summary>
+    ///
+    ///
+    
     public partial class StartScreen : Window
     {
+        private static MainWindow window = Application.Current.MainWindow as MainWindow;
         public StartScreen()
         {
+            Top = window.Top;
+            Left = window.Left;
+            Topmost = true;
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

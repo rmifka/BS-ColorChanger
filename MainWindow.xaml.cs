@@ -23,15 +23,17 @@ public partial class MainWindow : Window
     public OpenFileDialog dlg = new();
     public int leftOrRight = 1;
     public int overloadCount = 1;
-
     public PlayerData playerData;
     public int selectedUser = 1;
 
 
     public MainWindow()
-    { 
+    {
         WindowStartupLocation = WindowStartupLocation.CenterScreen;
         InitializeComponent();
+        StartScreen start = new StartScreen();
+        start.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        start.Show();
         InputColorsFromFileIntoButtons();
         dlg.Filter = "Data Files (.dat)|*.dat";
         dlg.DefaultExt = ".dat";

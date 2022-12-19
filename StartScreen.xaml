@@ -34,8 +34,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBlock TextAlignment="Center" Foreground="White" FontSize="80" Margin="0,93,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Language="de-de" Text="BS" /></TextBlock>
-        <TextBlock Text="Color Changer" TextAlignment="Center" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="662" FontSize="80" FontFamily="" />
-        <Button Style="{DynamicResource RoundedButtons}" Content="Start" Height="40" Background="#FFFF4848" Foreground="White" Margin="395,405,395,55" />
+        <TextBlock TextAlignment="Center" Foreground="#FFFF6565" FontSize="80" Margin="0,93,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Inter V Medium" Width="416"><Run Language="de-de" Text="Beat Saber" /></TextBlock>
+        <TextBlock Text="Color Changer" TextAlignment="Center" Foreground="#FF2EAEFF" HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="662" FontSize="80" FontFamily="Dissolve Regular" FontWeight="Bold" />
+        <Button Style="{DynamicResource RoundedButtons}" Content="Start" Height="40" Background="#FFFF4848" Foreground="White" Margin="395,405,395,55" Click="Button_Click" />
     </Grid>
 </Window>
