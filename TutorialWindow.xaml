@@ -40,6 +40,7 @@
         <Button Style="{DynamicResource LessRoundButtons}" Content="{iconPacks:ForkAwesome Kind=AngleLeft}" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Height="50" Width="50" Grid.Row="1" Background="#FF212138" Foreground="White" Click="PreviousImage" />
         <TextBlock x:Name="TutorialText" Margin="0,10,0,0" TextWrapping="Wrap" Height="79" Width="322" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontSize="13"><Run Text="Press the button " /><Run Language="de-de" Text="on" /><Run Text=" the right to get star" /><Run Text="ted" /></TextBlock>
         <Image x:Name="TutorialImage" HorizontalAlignment="Center" Height="334" Margin="0,100,0,0" VerticalAlignment="Top" Width="600" Grid.RowSpan="2" />
+        <Button Style="{DynamicResource LessRoundButtons}" Content="X" HorizontalAlignment="Left" Margin="864,10,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="28" Width="26" Background="#FFFF4646" FontSize="10" FontWeight="Bold" FontFamily="Inter" />
 
     </Grid>
 

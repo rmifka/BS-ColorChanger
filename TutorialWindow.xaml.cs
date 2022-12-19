@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,8 @@ namespace ColorChanger
         };
         static Window window = Application.Current.MainWindow;
         private MainWindow wind = window as MainWindow;
+        private bool FrontLastClicked = false;
+        private bool BackLastClicked = false;
 
         private string[] texts = new string[]
         {
@@ -66,11 +69,18 @@ namespace ColorChanger
 
         private void NextImage(object sender, RoutedEventArgs e)
         {
+            if (BackLastClicked)
+            {
+                cnt++;
+            }
             if (cnt == images.Length )
             {
                 this.Close();
                 return;
             }
+
+            FrontLastClicked = true;
+            BackLastClicked = false;
             TutorialImage.Source = images[cnt].Source;
             TutorialText.Text = texts[cnt];
             cnt++;
@@ -78,14 +88,26 @@ namespace ColorChanger
 
         private void PreviousImage(object sender, RoutedEventArgs e)
         {
-            if (cnt  - 1 < 0)
+            
+            if (FrontLastClicked)
+            {
+                cnt--;
+            }
+            if (cnt -1 < 0)
             {
                 this.Close();
                 return;
             }
+            FrontLastClicked = false;
+            BackLastClicked = true;
             cnt--;
             TutorialImage.Source = images[cnt].Source;
             TutorialText.Text = texts[cnt];
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
