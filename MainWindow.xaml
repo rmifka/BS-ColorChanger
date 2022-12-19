@@ -58,6 +58,21 @@
             </Setter>
         </Style>
 
+        <Style TargetType="FrameworkElement" x:Key="animatedList">
+            <Setter Property="Visibility" Value="Hidden" />
+            <Style.Triggers>
+                <Trigger Property="Visibility" Value="Visible">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.2" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <Style x:Key="ColorPreviewStyle" TargetType="Label">
             <Setter Property="Template">
                 <Setter.Value>

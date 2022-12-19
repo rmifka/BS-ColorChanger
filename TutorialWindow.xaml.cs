@@ -1,19 +1,8 @@
 ﻿using FirstWpfAPPColorPicker;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ColorChanger
 {
@@ -73,7 +62,7 @@ namespace ColorChanger
             {
                 cnt++;
             }
-            if (cnt == images.Length )
+            if (cnt == images.Length)
             {
                 this.Close();
                 return;
@@ -88,12 +77,12 @@ namespace ColorChanger
 
         private void PreviousImage(object sender, RoutedEventArgs e)
         {
-            
+
             if (FrontLastClicked)
             {
                 cnt--;
             }
-            if (cnt -1 < 0)
+            if (cnt - 1 < 0)
             {
                 this.Close();
                 return;
