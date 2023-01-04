@@ -1,0 +1,16 @@
+﻿<Window x:Class="ColorChanger.CurrentSchemePreview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorChanger"
+        mc:Ignorable="d"
+        Title="CurrentSchemePreview" Height="500" Width="900" FontFamily="Inter" WindowStyle="None" Foreground="White" Background="#FF1A1A1A">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="110,100,0,0" TextWrapping="Wrap" Text="Slot 1" VerticalAlignment="Top" FontSize="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="110,180,0,0" TextWrapping="Wrap" Text="Slot 2" VerticalAlignment="Top" FontSize="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="110,260,0,0" TextWrapping="Wrap" Text="Slot 3" VerticalAlignment="Top" FontSize="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="110,340,0,0" TextWrapping="Wrap" Text="Slot 4" VerticalAlignment="Top" FontSize="25"/>
+
+    </Grid>
+</Window>

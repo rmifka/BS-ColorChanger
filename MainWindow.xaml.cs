@@ -387,13 +387,13 @@ public partial class MainWindow : Window
         GreenSlider.Maximum = 255.0;
         BlueSlider.Maximum = 255.0;
         AlphaSlider.Maximum = 255.0;
-        if (AlphaSlider.Value > 255.0) AlphaSlider.Value = 255.0;
+        if (AlphaSlider.Value > 255.0) AlphaSlider.Value /= 2;
 
-        if (RedSlider.Value > 255.0) RedSlider.Value = 255.0;
+        if (RedSlider.Value > 255.0) RedSlider.Value /= 2;
 
-        if (GreenSlider.Value > 255.0) GreenSlider.Value = 255.0;
+        if (GreenSlider.Value > 255.0) GreenSlider.Value /= 2;
 
-        if (BlueSlider.Value > 255.0) BlueSlider.Value = 255.0;
+        if (BlueSlider.Value > 255.0) BlueSlider.Value /= 2;
     }
 
     private void AlphaSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

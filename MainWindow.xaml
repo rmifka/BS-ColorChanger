@@ -261,30 +261,53 @@
             <ColumnDefinition Width="20*" />
             <ColumnDefinition Width="0*" />
         </Grid.ColumnDefinitions>
+
+        <!-- Text-->
+
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="140,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Foreground="White" FontFamily="Inter" Grid.Column="1"><Run Text="Red" /><Run Text=" " /></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="140,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Foreground="White" FontFamily="Inter" Grid.Column="1" Text="Green" />
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="140,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" Foreground="White" FontFamily="Inter" Grid.Column="1"><Run Text="Blue" /><Run Text=" " /></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="140,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Foreground="White" FontFamily="Inter" Grid.Column="1" Text="Alpha" />
+
+        <!-- Sliders-->
+
         <Slider x:Name="RedSlider" Style="{DynamicResource Horizontal_Slider}" Margin="185,120,0,332" Maximum="255" LargeChange="10" SmallChange="1" IsSnapToTickEnabled="True" ValueChanged="RedSlider_ValueChanged" Background="{x:Null}" Grid.Column="1" x:FieldModifier="public" />
         <Slider x:Name="GreenSlider" Style="{DynamicResource Horizontal_Slider}" Margin="185,150,0,328" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" ValueChanged="GreenSlider_ValueChanged" Grid.Column="1" x:FieldModifier="public" />
         <Slider x:Name="BlueSlider" Style="{DynamicResource Horizontal_Slider}" Margin="185,180,0,290" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" ValueChanged="BlueSlider_ValueChanged" Grid.Column="1" x:FieldModifier="public" />
+        <Slider x:Name="AlphaSlider" Style="{DynamicResource Horizontal_Slider}" Margin="185,210,0,264" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" ValueChanged="AlphaSlider_ValueChanged" Background="#003A3A3A" Grid.Column="1" x:FieldModifier="public" />
+
+        <!-- Slider Values-->
+
         <Label x:Name="BlueSliderValue" Content="{Binding Value, ElementName=BlueSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="5,175,0,0" VerticalAlignment="Top" Width="50" Background="#FF1A1A1A" Foreground="White" BorderBrush="#FF212138" Height="26" Grid.Column="2" />
-        <Button Style="{DynamicResource RoundedButtons}" Content="Overloader" HorizontalAlignment="Left" Margin="7,257,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FF212138" Foreground="White" FontSize="10" FontFamily="Inter" Height="30" Width="95" Grid.Column="1" />
         <Label x:Name="GreenSliderValue" Content="{Binding Value, ElementName=GreenSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="5,145,0,0" VerticalAlignment="Top" Width="50" Background="#FF1A1A1A" Foreground="White" BorderBrush="#FF212138" Height="26" Grid.Column="2" />
         <Label x:Name="RedSliderValue" Content="{Binding Value, ElementName=RedSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" Width="50" Background="#FF1A1A1A" Foreground="White" BorderBrush="#FF212138" Height="26" Grid.Column="2" />
+        <Label x:Name="AlphaSliderValue" Content="{Binding Value, ElementName=AlphaSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="5,205,0,0" VerticalAlignment="Top" Width="50" Background="#FF1A1A1A" Foreground="White" BorderBrush="#FF212138" Height="26" Grid.Column="2" />
+
+        <!-- Overload Section-->
+
         <Button Style="{DynamicResource LessRoundButtons}" Content="Choose File" Margin="0,35,0,0" VerticalAlignment="Top" Height="30" Click="SelectFile" Background="#212138" Foreground="White" FontFamily="Inter" HorizontalAlignment="Center" Width="84" />
         <Button Style="{DynamicResource RoundedButtons}" Content="Reset Overload" HorizontalAlignment="Left" Margin="107,257,0,0" VerticalAlignment="Top" Click="Button_Click_2" Background="#212138" Foreground="White" FontFamily="Inter" FontSize="10" Height="30" Width="87" Grid.Column="1" />
+        <Button Style="{DynamicResource RoundedButtons}" Content="Overloader" HorizontalAlignment="Left" Margin="7,257,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FF212138" Foreground="White" FontSize="10" FontFamily="Inter" Height="30" Width="95" Grid.Column="1" />
+        <Button Style="{DynamicResource RoundedButtons}" x:Name="Auto_Overload" Content="Auto-Overload" HorizontalAlignment="Left" Margin="7,292,0,0" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Width="95" Height="30" FontFamily="Inter" FontSize="10" Click="AutoOversaturate" Grid.Column="1" />
+        <Button Style="{DynamicResource RoundedButtons}" x:Name="RandomColorButton" Grid.Column="1" Content="Random Color" HorizontalAlignment="Left" Margin="107,292,0,0" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Height="30" Width="87" FontFamily="Inter" FontSize="10" Click="RandomColor" />
+
+        <!-- Top Row-->
+
         <Button Style="{DynamicResource RoundedButtons}" x:Name="LeftSaber" Content="Left Saber" Click="Click_ColorLeftOrRight" Width="100" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="132,35,0,0" Background="#FF56FFFF" Foreground="#FF272222" FontFamily="Inter" FontSize="10" Grid.Column="1" />
         <Button Style="{DynamicResource RoundedButtons}" x:Name="RightSaber" Content="Right Saber" Click="Click_ColorLeftOrRight" Width="98" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="238,35,0,0" Background="#FF212138" Foreground="White" FontFamily="Inter" FontSize="10" Grid.Column="1" />
         <Button Style="{DynamicResource RoundedButtons}" x:Name="EnvironmentOuter" Content="Environment Outer" Click="Click_ColorLeftOrRight" Background="#212138" Width="98" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="548,35,0,0" Foreground="White" FontFamily="Inter" FontSize="10" Grid.Column="1" />
         <Button Style="{DynamicResource RoundedButtons}" x:Name="EnvironmentInner" Content="Environment Inner" Click="Click_ColorLeftOrRight" Background="#212138" Margin="446,35,0,0" Height="30" Width="98" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Inter" FontSize="10" Grid.Column="1" />
         <Button Style="{DynamicResource RoundedButtons}" x:Name="Wall" Content="Obstacle Color" Click="Click_ColorLeftOrRight" Background="#212138" Height="30" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="340,35,0,0" Foreground="White" FontFamily="Inter" FontSize="10" FontWeight="Normal" Grid.Column="1" />
+
+        <!-- Color Slots-->
+
         <Button Style="{DynamicResource LessRoundButtons}" x:Name="Color1" Content="I Slot" Click="Color_Click" Background="#FF56FFFF" FontFamily="Inter" FontSize="14" Width="84" Height="36" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF272222" Margin="0,88,0,0" />
         <Button Style="{DynamicResource LessRoundButtons}" x:Name="Color2" Content="II Slot" Click="Color_Click" FontSize="14" FontFamily="Inter" Height="38" Width="84" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Margin="0,154,0,0" />
         <Button Style="{DynamicResource LessRoundButtons}" x:Name="Color3" Content="III Slot" Click="Color_Click" FontSize="14" FontFamily="Inter" Width="84" Height="36" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Margin="0,218,0,0" />
         <Button Style="{DynamicResource LessRoundButtons}" x:Name="Color4" Content="IIII Slot" Click="Color_Click" FontFamily="Inter" FontSize="14" Height="34" Width="84" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Margin="0,284,0,0" />
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="140,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="38" Foreground="White" FontFamily="Inter" Grid.Column="1" Text="Alpha" />
-        <Slider x:Name="AlphaSlider" Style="{DynamicResource Horizontal_Slider}" Margin="185,210,0,264" Maximum="255" SmallChange="1" LargeChange="10" IsSnapToTickEnabled="True" IsSelectionRangeEnabled="True" ValueChanged="AlphaSlider_ValueChanged" Background="#003A3A3A" Grid.Column="1" x:FieldModifier="public" />
-        <Label x:Name="AlphaSliderValue" Content="{Binding Value, ElementName=AlphaSlider, StringFormat=\{0:F0\}}" HorizontalAlignment="Left" Margin="5,205,0,0" VerticalAlignment="Top" Width="50" Background="#FF1A1A1A" Foreground="White" BorderBrush="#FF212138" Height="26" Grid.Column="2" />
+        
+        <!-- Save-->
+
         <Button Style="{DynamicResource RoundedButtons}" Content="SAVE" HorizontalAlignment="Left" Margin="624,410,0,0" VerticalAlignment="Top" Click="SaveToUserClick" Grid.Column="1" Width="104" Height="39" FontFamily="Inter" FontSize="14" FontWeight="Bold" Foreground="White" OpacityMask="Red" Grid.ColumnSpan="2">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" SpreadMethod="Pad">
@@ -301,6 +324,9 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+
+        <!-- Preview-->
+
         <Label Style="{DynamicResource ColorPreviewStyle}" x:Name="ColorPreview" Content="" HorizontalAlignment="Left" Margin="12,114,0,0" VerticalAlignment="Top" Height="119" Width="118" Background="Black" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -312,12 +338,16 @@
             </Label.RenderTransform>
         </Label>
         <Label Content="Color Preview" Margin="26,79,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Inter" Background="#0065651B" Foreground="White" Height="34" Width="91" Grid.Column="1" />
-        <Button Style="{DynamicResource RoundedButtons}" x:Name="Auto_Overload" Content="Auto-Overload" HorizontalAlignment="Left" Margin="7,292,0,0" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Width="95" Height="30" FontFamily="Inter" FontSize="10" Click="AutoOversaturate" Grid.Column="1" />
+
+        <!-- Bottom Left Items-->
+
         <Label Content="Overload Count:" HorizontalAlignment="Left" Margin="15,368,0,0" VerticalAlignment="Top" Height="26" Width="102" Foreground="White" FontFamily="Inter" Grid.Column="1" />
-        <TextBox x:Name="OverloadCountBox" Grid.Column="1" HorizontalAlignment="Left" Margin="124,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Background="#FF212138" Foreground="White" TextChanged="OverloadCountBox_TextChanged" IsTabStop="False" Text="1" FontFamily="Inter" BorderBrush="#FF212138" Height="26" VerticalContentAlignment="Center" />
-        <TextBox x:Name="HexadecimalBox" Grid.Column="1" HorizontalAlignment="Left" Margin="67,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Background="#FF212138" Foreground="White" TextChanged="CheckHex" IsTabStop="False" FontFamily="Inter" BorderBrush="#FF212138" Height="26"  VerticalContentAlignment="Center"/>
+        <TextBox x:Name="OverloadCountBox" Grid.Column="1" HorizontalAlignment="Left" Margin="124,368,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Background="#FF212138" Foreground="White" TextChanged="OverloadCountBox_TextChanged" IsTabStop="False" Text="1" FontFamily="Inter" BorderBrush="#FF212138" Height="26" VerticalContentAlignment="Center" SelectionBrush="#FF1E36FF" />
+        <TextBox x:Name="HexadecimalBox" Grid.Column="1" HorizontalAlignment="Left" Margin="67,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" Background="#FF212138" Foreground="White" TextChanged="CheckHex" IsTabStop="False" FontFamily="Inter" BorderBrush="#FF212138" Height="26"  VerticalContentAlignment="Center" SelectionBrush="#FF1E36FF"/>
         <Label Content="Hex" HorizontalAlignment="Left" Margin="18,419,0,0" VerticalAlignment="Top" Height="26" Width="46" Foreground="White" FontFamily="Inter" Grid.Column="1" RenderTransformOrigin="0.54,0.612" />
-        <Button Style="{DynamicResource RoundedButtons}" x:Name="RandomColorButton" Grid.Column="1" Content="Random Color" HorizontalAlignment="Left" Margin="107,292,0,0" VerticalAlignment="Top" Background="#FF212138" Foreground="White" Height="30" Width="87" FontFamily="Inter" FontSize="10" Click="RandomColor" />
+
+        <!-- Presets-->
+
         <Button Style="{DynamicResource ColorPreseter}" x:Name="DefaultRed" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="433,257,0,0" VerticalAlignment="Top" Background="#FFA82020" Foreground="White" Width="16" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
         <Button Style="{DynamicResource ColorPreseter}" x:Name="DefaultBlue" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="452,257,0,0" VerticalAlignment="Top" Background="#FF2064A8" Foreground="White" Width="16" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
         <Button Style="{DynamicResource ColorPreseter}" x:Name="OverloadedRed" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="470,257,0,0" VerticalAlignment="Top" Background="Red" Foreground="White" Width="16" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
@@ -346,9 +376,13 @@
         <Button Style="{DynamicResource ColorPreseter}" x:Name="Preset12" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="635,293,0,0" VerticalAlignment="Top" Foreground="White" Width="15" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
         <Button Style="{DynamicResource ColorPreseter}" x:Name="Preset13" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="653,293,0,0" VerticalAlignment="Top" Foreground="White" Width="15" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
         <Button Style="{DynamicResource ColorPreseter}" x:Name="Preset14" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="671,293,0,0" VerticalAlignment="Top" Foreground="White" Width="15" Height="16" FontFamily="Inter" FontSize="10" Click="SerColorFromPreset" />
+
+        <!-- Menu Buttons-->
+
         <Button Style="{DynamicResource LessRoundButtons}" Grid.Column="2" Content="X" HorizontalAlignment="Left" Margin="44,7,0,0" VerticalAlignment="Top" Click="Button_Click_1" Height="28" Width="26" Background="#FFFF4646" FontSize="10" FontWeight="Bold" FontFamily="Inter" />
         <Button Style="{DynamicResource LessRoundButtons}" Grid.Column="2" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Click="Minimize" Height="28" Width="28" Background="#FF46D0FF" FontWeight="ExtraBold" FontSize="16" Margin="10,7,0,0" FontFamily="Inter" />
         <Button Style="{DynamicResource LessRoundButtons}" Grid.Column="1" Content="{iconPacks:VaadinIcons Kind=AcademyCap}" HorizontalAlignment="Left" Margin="375,420,0,0" VerticalAlignment="Top" Height="50" Width="50" Click="PlayTutorial" Background="#FF212138" Foreground="White">
         </Button>
+
     </Grid>
 </Window>
